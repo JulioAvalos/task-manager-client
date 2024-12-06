@@ -1,0 +1,43 @@
+.on-time {
+  --mdc-chip-label-text-color: white !important;
+}
+
+.almost-late {
+  background-color: #E5B4541A !important;
+  --mdc-chip-label-text-color: #E5B454 !important;
+}
+
+.late {
+  background-color: #DA584B1A !important;
+  --mdc-chip-label-text-color: #DA584B !important;
+}
+
+.d-flex.overflow-auto {
+  -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 10px 0;
+  margin-bottom: 10px;
+}
+
+.d-flex.overflow-auto::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.d-flex.overflow-auto::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+
+.d-flex.overflow-auto::-webkit-scrollbar-thumb {
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.d-flex.overflow-auto::-webkit-scrollbar-thumb:hover {
+  background-color: #dcdcdc;
+}
+
+.d-flex .square-chip {
+  margin-right: 12px;
+}

@@ -1,0 +1,11 @@
+<div class="flex-column column" style="width: 340px;">
+  <div class="fw-bold fs-5 mb-2">
+    {{ column.title }} ({{ column.tasks.length }})
+  </div>
+  <div *ngIf="column.tasks.length; else noTasks" class="container-fluid d-flex flex-column p-0 gap-3">
+    <app-task-card *ngFor="let task of column.tasks; let i = index" [task]="task" [index]="i"></app-task-card>
+  </div>
+  <ng-template #noTasks>
+    <app-empty-state [message]="'No tasks available in this column.'"></app-empty-state>
+  </ng-template>
+</div>

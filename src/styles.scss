@@ -1,0 +1,103 @@
+/* You can add global styles to this file, and also import other style files */
+
+// styles.scss
+@use './styles/colors';
+@use './styles/typography';
+@use './styles/theme';
+@use './styles/icon';
+@use "bootstrap/scss/bootstrap";
+
+// Global styles
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: sans-serif; /* Global font-family */
+}
+
+:root {
+  --mat-sidenav-container-text-color: #DA584B;
+}
+
+.square-chip {
+  border-radius: 8px !important;
+}
+
+.square-fab-button {
+  border-radius: 8px !important;
+
+  span.icon-plus-icon {
+    font-size: 20px !important;
+  }
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.success-snackbar {
+  --mdc-snackbar-container-color: #70B252;
+}
+
+.scrollbar-custom {
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+  overflow: auto;
+  padding: 10px 0;
+  margin-bottom: 10px;
+  scrollbar-gutter: stable;
+}
+
+.scrollbar-custom::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 10px;
+}
+
+/* Thumb Styling */
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+.scrollbar-custom {
+  scrollbar-gutter: stable;
+}
+
+.scroll-button {
+  position: absolute;
+  bottom: 0;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.scroll-button.left {
+  left: 5px;
+}
+
+.scroll-button.right {
+  right: 5px;
+}
+
+.scroll-button:hover {
+  background-color: #f0f0f0;
+}
+
+.scrollbar-custom::-webkit-scrollbar-corner {
+  background: rgba(0, 0, 0, 0);
+}

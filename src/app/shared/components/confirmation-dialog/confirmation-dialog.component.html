@@ -1,0 +1,14 @@
+
+  <h2 mat-dialog-title class="ps-3">
+    {{ title }}
+  </h2>
+
+  <mat-dialog-content class="mt-1">
+    <p>{{ data.message }}</p>
+  </mat-dialog-content>
+
+  <mat-dialog-actions class="d-flex justify-content-center mb-3 gap-3">
+    <button mat-raised-button (click)="onCancel()">Cancel</button>
+    <button mat-raised-button color="primary" (click)="onConfirm()">Confirm</button>
+  </mat-dialog-actions>
+

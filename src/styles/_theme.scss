@@ -1,0 +1,85 @@
+// _theme.scss
+
+@use '@angular/material' as mat;
+@use './colors' as colors;
+@use './typography' as typography;
+
+// Define primary, secondary, and other color palettes
+$primary-palette: mat.m2-define-palette((
+  50: colors.$color-primary-1,
+  100: colors.$color-primary-2,
+  200: colors.$color-primary-3,
+  500: colors.$color-primary-4,
+  700: colors.$color-primary-4,
+  contrast: (
+    50: colors.$color-neutral-5,
+    100: colors.$color-neutral-5,
+    200: colors.$color-neutral-5,
+    500: colors.$color-neutral-1,
+    700: colors.$color-neutral-1,
+  )
+));
+
+$secondary-palette: mat.m2-define-palette((
+  50: colors.$color-secondary-1,
+  100: colors.$color-secondary-2,
+  200: colors.$color-secondary-3,
+  500: colors.$color-secondary-4,
+  700: colors.$color-secondary-4,
+  contrast: (
+    50: colors.$color-neutral-5,
+    100: colors.$color-neutral-5,
+    200: colors.$color-neutral-5,
+    500: colors.$color-neutral-1,
+    700: colors.$color-neutral-1,
+  )
+));
+
+$tertiary-palette: mat.m2-define-palette((
+  50: colors.$color-tertiary-1,
+  100: colors.$color-tertiary-2,
+  200: colors.$color-tertiary-3,
+  500: colors.$color-tertiary-4,
+  700: colors.$color-tertiary-4,
+  contrast: (
+    50: colors.$color-neutral-5,
+    100: colors.$color-neutral-5,
+    200: colors.$color-neutral-5,
+    500: colors.$color-neutral-5,
+    700: colors.$color-neutral-5,
+  )
+));
+
+$neutral-palette: mat.m2-define-palette((
+  50: colors.$color-neutral-1,
+  100: colors.$color-neutral-2,
+  200: colors.$color-neutral-3,
+  500: colors.$color-neutral-4,
+  700: colors.$color-neutral-5,
+  contrast: (
+    50: colors.$color-neutral-5,
+    100: colors.$color-neutral-1,
+    200: colors.$color-neutral-1,
+    500: colors.$color-neutral-1,
+    700: colors.$color-neutral-1,
+  )
+));
+
+// Apply custom typography and theme
+$dark-theme: mat.m2-define-dark-theme((
+  color: (
+    primary: $primary-palette,
+    accent: $secondary-palette,
+    warn: $tertiary-palette,
+    background: $neutral-palette,
+  ),
+  typography: typography.$typography,
+));
+
+// Include the theme for Material components
+@include mat.all-component-themes($dark-theme);
+@include mat.snack-bar-overrides((
+  container-color: colors.$color-primary-4,
+  supporting-text-color: colors.$color-neutral-1,
+  button-color: colors.$color-neutral-1
+));

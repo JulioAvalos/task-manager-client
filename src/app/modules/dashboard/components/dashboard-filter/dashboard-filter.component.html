@@ -1,0 +1,117 @@
+<form [formGroup]="filterForm" class="filter-container d-flex flex-column">
+  <!-- Name and Due Date Fields (First Row) -->
+  <div class="d-flex gap-3">
+    <!-- Name Field -->
+    <mat-form-field class="col-8" appearance="outline">
+      <mat-icon matPrefix>search</mat-icon> <!-- Add your desired icon here -->
+      <input matInput id="name" type="text" formControlName="name" placeholder="Search">
+      <button mat-icon-button matSuffix (click)="clearField('name')" *ngIf="filterForm.get('name')?.value">
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <!-- Due Date Field -->
+    <mat-form-field class="col-4" appearance="outline">
+      <input matInput [matDatepicker]="picker" formControlName="dueDate" placeholder="Select a date">
+      <mat-datepicker-toggle matPrefix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <button mat-icon-button matSuffix (click)="clearField('dueDate')" *ngIf="filterForm.get('dueDate')?.value">
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+
+  <!-- Filter Buttons for Other Fields -->
+  <div class="d-flex flex-wrap gap-3">
+    <!-- Point Estimate Button -->
+    <mat-chip class="square-chip" [matMenuTriggerFor]="pointEstimateMenu">
+      Point Estimate
+      <button matChipTrailingIcon *ngIf="!filterForm.get('pointEstimate')?.value">
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+      <button matChipRemove aria-label="remove point estimate" *ngIf="filterForm.get('pointEstimate')?.value" (click)="clearField('pointEstimate')">
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </mat-chip>
+    <mat-menu #pointEstimateMenu="matMenu">
+      <mat-radio-group formControlName="pointEstimate">
+        <div class="menu-option" *ngFor="let point of pointEstimates">
+          <mat-radio-button color="primary"  class="pe-1" [value]="point">{{ point | wordToNumber }}</mat-radio-button>
+        </div>
+      </mat-radio-group>
+    </mat-menu>
+
+
+    <!-- Assignee Button -->
+    <mat-chip class="square-chip" [matMenuTriggerFor]="assigneeMenu">
+      Assignee
+      <button matChipTrailingIcon *ngIf="!filterForm.get('assigneeId')?.value">
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+      <button matChipRemove aria-label="remove assignee" *ngIf="filterForm.get('assigneeId')?.value" (click)="clearField('assigneeId')">
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </mat-chip>
+    <mat-menu #assigneeMenu="matMenu">
+      <mat-radio-group formControlName="assigneeId">
+        <div class="menu-option" *ngFor="let user of users">
+          <mat-radio-button color="primary"  [value]="user.id">{{ user.fullName }}</mat-radio-button>
+        </div>
+      </mat-radio-group>
+    </mat-menu>
+
+    <mat-chip class="square-chip" [matMenuTriggerFor]="statusMenu">
+      Status
+      <button matChipTrailingIcon *ngIf="!filterForm.get('status')?.value">
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+      <button matChipRemove aria-label="remove status" *ngIf="filterForm.get('status')?.value" (click)="clearField('status')">
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </mat-chip>
+    <mat-menu #statusMenu="matMenu">
+      <mat-radio-group formControlName="status">
+        <div class="menu-option" *ngFor="let stat of statuses">
+          <mat-radio-button color="primary" [value]="stat">{{ stat }}</mat-radio-button>
+        </div>
+      </mat-radio-group>
+    </mat-menu>
+
+    <!-- Tags Button -->
+    <mat-chip class="square-chip" [matMenuTriggerFor]="tagsMenu">
+      Tags ({{ getSelectedCount('tags') }})
+      <button matChipRemove aria-label="remove tags" *ngIf="getSelectedCount('tags') > 0" (click)="clearField('tags')">
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </mat-chip>
+    <mat-menu #tagsMenu="matMenu">
+      <div class="menu-option" *ngFor="let tag of tags; let i = index">
+        <mat-checkbox
+          color="primary"
+          [checked]="filterForm.get('tags')?.value && filterForm.get('tags')?.value.includes(tag)"
+          (change)="toggleTagSelection(tag)"
+        >
+          {{ tag }}
+        </mat-checkbox>
+      </div>
+    </mat-menu>
+
+    <!-- Owner Button -->
+    <mat-chip class="square-chip" [matMenuTriggerFor]="ownerMenu">
+      Owner
+      <button matChipTrailingIcon *ngIf="!filterForm.get('ownerId')?.value">
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+      <button matChipRemove aria-label="remove owner" *ngIf="filterForm.get('ownerId')?.value" (click)="clearField('ownerId')">
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </mat-chip>
+    <mat-menu #ownerMenu="matMenu">
+      <mat-radio-group formControlName="ownerId">
+        <div class="menu-option" *ngFor="let user of users">
+          <mat-radio-button color="primary" [value]="user.id">{{ user.fullName }}</mat-radio-button>
+        </div>
+      </mat-radio-group>
+    </mat-menu>
+  </div>
+</form>

@@ -1,0 +1,43 @@
+<div *ngIf="isLoading">
+  <div class="row g-3">
+    <div class="col-3">
+      <div class="skeleton skeleton-column-title"></div>
+    </div>
+    <div class="col-3">
+      <div class="skeleton skeleton-column-title"></div>
+    </div>
+    <div class="col-3">
+      <div class="skeleton skeleton-column-title"></div>
+    </div>
+    <div class="col-3">
+      <div class="skeleton skeleton-column-title"></div>
+    </div>
+    <div *ngFor="let card of skeletonCards" class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <mat-card class="skeleton-card">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="skeleton skeleton-title m-3"></div>
+          <div class="skeleton skeleton-menu me-3"></div>
+        </div>
+
+        <div class="d-flex flex-column">
+          <div class="d-flex justify-content-between">
+            <div class="skeleton skeleton-points m-3"></div>
+            <div class="skeleton skeleton-chip m-3"></div>
+          </div>
+
+          <div class="d-flex mt-2 overflow-auto">
+            <div class="skeleton skeleton-tags ms-3"></div>
+            <div class="skeleton skeleton-tags ms-1"></div>
+            <div class="skeleton skeleton-tags ms-1"></div>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-between mt-2">
+          <div class="d-flex align-items-center">
+            <div class="skeleton skeleton-avatar m-3"></div>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

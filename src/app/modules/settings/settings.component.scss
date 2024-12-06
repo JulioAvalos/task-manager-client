@@ -1,0 +1,55 @@
+.avatar-img {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+/* Avatar Skeleton */
+.skeleton-avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #353535; /* Updated color */
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+/* Title and Subtitle Skeleton */
+.skeleton-text {
+  background-color: #353535; /* Updated color */
+  height: 20px;
+  margin: 10px 0;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+/* Specific styles for title, subtitle, and paragraph */
+.skeleton-title {
+  width: 200px;
+  margin-bottom: 10px;
+}
+
+.skeleton-subtitle {
+  width: 150px;
+  margin-bottom: 15px;
+}
+
+.skeleton-paragraph {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+/* Pulse animation */
+@keyframes pulse {
+  0% {
+    background-color: #353535; /* Updated color */
+  }
+  50% {
+    background-color: #2c2c2c; /* Slightly darker color for the pulse effect */
+  }
+  100% {
+    background-color: #353535; /* Updated color */
+  }
+}
+
+
+

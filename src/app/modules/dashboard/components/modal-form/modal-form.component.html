@@ -1,0 +1,110 @@
+<div class="modal-container">
+  <!-- Modal Header -->
+  <div class="modal-header">
+    <h2>{{ isUpdating ? 'Update Task' : 'Create Task'}}</h2>
+  </div>
+
+  <!-- Modal Form -->
+  <form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="modal-form">
+    <div class="container">
+      <div class="row">
+
+        <!-- Task Name -->
+        <div class="col-12 mb-3">
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Task Name</mat-label>
+            <input matInput placeholder="Enter task name" formControlName="name" required [disabled]="isLoading" />
+            <mat-error *ngIf="taskForm.get('name')?.hasError('required')">
+              Task name is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- Point Estimate -->
+        <div class="col-12 mb-3">
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Point Estimate</mat-label>
+            <mat-select formControlName="pointEstimate" required [disabled]="isLoading">
+              <mat-option *ngFor="let option of pointEstimateOptions" [value]="option.value">
+                {{ option.label }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="taskForm.get('pointEstimate')?.hasError('required')">
+              Point estimate is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- Assignee -->
+        <div class="col-12 mb-3">
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Assignee</mat-label>
+            <mat-select formControlName="assigneeId" required [disabled]="isLoading">
+              <mat-option *ngFor="let user of users; let i = index" [value]="user.id">
+                <div class="d-flex align-items-center">
+                  <img
+                    mat-card-avatar
+                    [src]="'https://i.pravatar.cc/150?img=' + i"
+                    alt="Avatar"
+                    width="24"
+                    height="24"
+                  />
+                  <p class="ps-2">{{ user.fullName }}</p>
+                </div>
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="taskForm.get('assigneeId')?.hasError('required')">
+              Assignee is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- Labels (Tags) -->
+        <div class="col-12 mb-3">
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Labels</mat-label>
+            <mat-select formControlName="tags" multiple required [disabled]="isLoading">
+              <mat-option *ngFor="let tag of tagOptions" [value]="tag.value">
+                {{ tag.label }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="taskForm.get('tags')?.hasError('required')">
+              At least one label is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- Due Date -->
+        <div class="col-12 mb-3">
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Due Date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="dueDate" placeholder="Choose a date" required [disabled]="isLoading" />
+            <mat-datepicker-toggle matPrefix [for]="picker" [disabled]="isLoading"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="taskForm.get('dueDate')?.hasError('required')">
+              Due date is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="row">
+        <div class="col-6">
+          <button mat-raised-button color="primary" type="submit" class="w-100" [disabled]="taskForm.invalid || isLoading">
+            {{ isUpdating ? 'Update' : 'Create'}} Task
+          </button>
+        </div>
+        <div class="col-6">
+          <button mat-raised-button color="primary" class="w-100" [disabled]="isLoading" (click)="onCloseForm()">
+            Cancel
+          </button>
+        </div>
+        <div class="col-12 mt-1">
+          <div class="mt-1" *ngIf="!isLoading"></div>
+          <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,32 @@
+<div class="dashboard-wrapper">
+  <!-- Dashboard Filter -->
+  <div class="d-flex">
+    <div class="col-11">
+      <app-dashboard-filter (filterApplied)="applyFilter($event)"></app-dashboard-filter>
+    </div>
+    <div class="col-1 d-flex justify-content-center mt-2 cursor-pointer" (click)="goToPage()">
+      <img class="avatar-img-settings" src="https://i.pravatar.cc/150?img=55" alt="avatar-icon"
+           matTooltip="Profile section"/>
+    </div>
+  </div>
+
+  <!--  Skeleton component-->
+  <app-skeleton [isLoading]="isLoading"></app-skeleton>
+
+  <!-- Add Task Button -->
+  <div class="d-flex justify-content-end mb-2">
+    <button *ngIf="!isLoading" class="square-fab-button"
+            mat-mini-fab color="primary" aria-label="Add task"
+            (click)="openModal()">
+      <span class="icon-plus-icon"></span>
+    </button>
+  </div>
+
+  <!-- Main Content Area -->
+  <div *ngIf="!isLoading" class="main-content scrollbar-custom">
+    <div class="container-fluid d-flex justify-content-between pt-2 px-0 gap-3">
+      <app-column *ngFor="let column of columns" [column]="column">
+      </app-column>
+    </div>
+  </div>
+</div>

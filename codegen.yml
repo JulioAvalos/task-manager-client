@@ -1,0 +1,9 @@
+## Set up your API URL
+schema: "https://syn-api-prod.herokuapp.com/graphql"
+documents: "./*.graphql"
+generates:
+  src/app/core/graphql/graphql-types.ts:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-apollo-angular"

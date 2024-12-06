@@ -1,0 +1,27 @@
+.filter-container {
+  display: flex;
+  flex-direction: column;
+}
+
+mat-form-field {
+  flex: 1 1 auto;
+  min-width: 150px;
+}
+
+button {
+  flex: 0 0 auto;
+}
+
+.filter-container {
+  padding-bottom: 20px;
+}
+
+@media (min-width: 1715px) {
+  .filter-container {
+    display: block;
+  }
+}
+
+.due-date-field input {
+  display: none;
+}

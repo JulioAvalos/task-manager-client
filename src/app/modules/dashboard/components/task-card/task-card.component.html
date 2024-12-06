@@ -1,0 +1,58 @@
+<mat-card style="width: 100%; height: 250px; padding: 25px;">
+  <!-- Card Header -->
+
+  <div class="d-flex justify-content-between align-items-center">
+
+    <div class="fw-bold">{{ task.name }}</div>
+    <div class="cursor-pointer">
+
+      <!-- Menu Button -->
+      <button mat-button [matMenuTriggerFor]="menu">
+        <span class="icon-option-icon fs-4"></span>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="updateTask(task)">
+          <span>Update</span>
+        </button>
+        <button mat-menu-item (click)="openDeleteConfirmation(task.id)">
+          <span>Delete</span>
+        </button>
+      </mat-menu>
+
+    </div>
+  </div>
+
+  <!-- Card Content -->
+  <div class="d-flex flex-column mt-3">
+
+    <div class="d-flex justify-content-between">
+      <div>{{ task.pointEstimate | wordToNumber }} points</div>
+      <mat-chip [ngClass]="{
+          'on-time': isOnTime(task.dueDate),
+          'almost-late': isAlmostLate(task.dueDate),
+          'late': isLate(task.dueDate)
+        }" class="square-chip">
+        <div class="d-flex justify-content-center align-content-center">
+          <span class="mb-1 align-self-center icon-alarm-icon fs-5"></span>
+          <span class="ps-1 my-1 fw-medium">{{ task.dueDate | readableDate }}</span>
+        </div>
+      </mat-chip>
+    </div>
+
+    <!-- Tags -->
+    <div class="d-flex mt-3 overflow-auto">
+      <div class="d-flex flex-nowrap">
+        <mat-chip class="me-2 square-chip" *ngFor="let tag of task.tags">{{ tag }}</mat-chip>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Avatar -->
+  <div class="d-flex justify-content-between mt-1">
+    <div class="d-flex align-items-center">
+      <img mat-card-avatar [src]="'https://i.pravatar.cc/150?img='+index" alt="avatar" class="avatar-img">
+    </div>
+  </div>
+
+</mat-card>
