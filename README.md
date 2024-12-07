@@ -38,9 +38,11 @@ src/
 │   │   │   │   ├── dashboard-filter/ # Dashboard filter component
 │   │   │   │   ├── empty-state/      # Empty state component
 │   │   │   │   ├── modal-form/       # Modal form component
+│   │   │   │   ├── skeleton/         # Skeleton loader component
 │   │   │   │   └── task-card/        # Task card component
 │   │   ├── error/                    # Error module
-│   │   └── not-found/                # 404 not found page
+│   │   ├── not-found/                # 404 not found page
+│   │   └── settings/                 # User settings module
 │   └── shared/                       # Shared resources across modules
 │       ├── components/               # Shared UI components
 │       │   ├── confirmation-dialog/  # Confirmation dialog component
@@ -54,14 +56,42 @@ src/
 └── styles/                           # Global styles and theming
 ```
 
-### Key Observations:
-1. **Core (`app/core`)**: Handles low-level utilities, services, and helpers such as GraphQL, interceptors, guards, and models.
-2. **Modules (`app/modules`)**: Contains feature-specific modules like `dashboard`, `error`, and `not-found`, making your application modular.
-3. **Shared (`app/shared`)**: Includes shared components (e.g., confirmation dialog, layout), utilities, and services that are reusable across your app.
-4. **Environment Configuration (`environments`)**: Configuration files for different environments (e.g., development and production settings).
-5. **Styles (`styles`)**: Global styles for the app, likely including SCSS or CSS files.
+## Key Observations
 
-This structure seems well-organized, with clear separations for different responsibilities such as core logic, features, and shared resources.
+### 1. Core (`app/core`)
+This folder contains essential functionalities and services for the application, including:
+- **GraphQL**: Setup and queries for data fetching.
+- **Guards**: Route guards for controlling access to different parts of the app.
+- **Helpers**: Utility functions for common tasks across the app.
+- **Interceptors**: HTTP interceptors to handle requests and responses.
+- **Models**: TypeScript interfaces and models used across the application.
+- **Services**: Core services like API services for interacting with backend data.
+
+### 2. Modules (`app/modules`)
+This folder contains feature-specific modules, ensuring the app remains modular and easy to maintain:
+- **Dashboard**: Contains all components related to the task dashboard.
+- **Error**: Handles error management for the app.
+- **Not Found**: Displays a 404 page when the user navigates to an unknown route.
+- **Settings**: Manages user-specific settings and preferences.
+
+### 3. Shared (`app/shared`)
+Resources that are used across multiple modules or components are placed in this folder:
+- **Components**: Shared UI components such as confirmation dialogs, layout components, and loading spinners.
+- **Directives**: Custom directives that modify the behavior of DOM elements.
+- **Pipes**: Custom pipes for transforming data in templates.
+- **Services**: Shared services for functionality that needs to be used across different parts of the app.
+- **Utils**: Utility functions and helpers that can be used globally.
+
+### 4. Environment Configuration (`environments`)
+Contains configuration files for different environments, such as:
+- **Development**: Settings for the development environment.
+- **Production**: Settings for the production environment.
+- This allows you to manage different configurations for various stages of deployment.
+
+### 5. Styles (`styles`)
+Contains global styles for the app:
+- Likely includes SCSS or CSS files that define the overall look and feel of the application.
+- Ensures consistent styling across the entire app.
 
 ## Setup and Installation
 1. Clone this repository:
