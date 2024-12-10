@@ -2,8 +2,11 @@
 
 This project is a Task Manager Client built using **Angular** and **GraphQL**. It is designed to help users manage tasks efficiently by providing features such as task creation, filtering, and assignment.
 
-🔗 **Check it out here:**
+💬 **Notes on Filter Tasks:**
+- The `ownerId` filter does not work as expected. Please try using `assigneeId` instead.
+- The **Due Date** filter requires a datetime value (including specifics like minute, day, month, year, milliseconds, etc.). Example: `2024-12-10T15:30:00Z`. It may not work as expected with just a date.
 
+🔗 **Check it out here:**
 - [Live Demo](https://ng-recipe-book-19d7d.web.app/)
 
 ![Dashboard](https://raw.githubusercontent.com/JulioAvalos/task-manager-client/refs/heads/master/public/assets/images/main-app.PNG)
@@ -14,6 +17,7 @@ This project is a Task Manager Client built using **Angular** and **GraphQL**. I
 - **⚡ GraphQL**: Used for querying and mutating the task data efficiently.
 - **🎨 Bootstrap**: For styling and responsive design.
 - **📦 Angular Material**: For modern UI components.
+- ⚙️ **GraphQL Types:** We used **graphql-codegen** library, to generate the GraphQL types.
 
 ## Features & Usage
 
