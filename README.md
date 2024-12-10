@@ -1,4 +1,4 @@
-📝 **Task Manager Client**
+## 📝 **Task Manager Client**
 
 This project is a Task Manager Client built using **Angular** and **GraphQL**. It is designed to help users manage tasks efficiently by providing features such as task creation, filtering, and assignment.
 
