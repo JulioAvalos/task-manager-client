@@ -4,7 +4,7 @@ This project is a Task Manager Client built using **Angular** and **GraphQL**. I
 
 💬 **Notes on Filter Tasks:**
 - The `ownerId` filter does not work as expected. Please try using `assigneeId` instead.
-- The **Due Date** filter requires a datetime value (including specifics like minute, day, month, year, milliseconds, etc.). Example: `2024-12-10T15:30:00Z`. It may not work as expected with just a date.
+- The `dueDate` filter requires a datetime value (including specifics like minute, day, month, year, milliseconds, etc.). Example: `2024-12-10T15:30:00Z`. It may not work as expected with just a date.
 
 🔗 **Check it out here:**
 - [Live Demo](https://ng-recipe-book-19d7d.web.app/)
