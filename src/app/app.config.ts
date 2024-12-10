@@ -21,26 +21,25 @@ export const appConfig: ApplicationConfig = {
       withInterceptors([serverErrorInterceptor])
     ),
     provideApollo(() => {
-
       const httpLink = inject(HttpLink);
-
       const auth = setContext(() => {
-
         const token = environment.API_TOKEN;
-
         if (token === null) {
           return {};
         } else {
           return {headers: {Authorization: `Bearer ${token}`}};
         }
-
       });
-
       return {
         link: ApolloLink.from([auth, httpLink.create({uri: environment.API_URL})]),
-        cache: new InMemoryCache(),
+        cache: new InMemoryCache({
+          typePolicies: {
+            Task: {
+              merge: true
+            }
+          }
+        }),
         devtools: {enabled: !environment.production},
       };
-
     })]
 };
