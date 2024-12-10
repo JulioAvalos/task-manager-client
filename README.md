@@ -1,6 +1,6 @@
 # Task Manager Client
 
-This project is a **Task Manager Client** built using **Angular** and **GraphQL**. It is designed to help users manage tasks efficiently by providing features such as task creation, filtering, and assignment.
+This project is a [Task Manager Client](https://ng-recipe-book-19d7d.web.app/) built using **Angular** and **GraphQL**. It is designed to help users manage tasks efficiently by providing features such as task creation, filtering, and assignment.
 
 ## Features
 
